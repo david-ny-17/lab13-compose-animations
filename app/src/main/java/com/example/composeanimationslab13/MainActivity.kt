@@ -43,32 +43,36 @@ fun AppNavigation() {
                 onClick = { currentExercise = 1 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (currentExercise == 1) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
-                )
-            ) {
-                Text("Ej 1")
-            }
+                ),
+                contentPadding = PaddingValues(horizontal = 12.dp)
+            ) { Text("Ej 1") }
 
             Button(
                 onClick = { currentExercise = 2 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (currentExercise == 2) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
-                )
-            ) {
-                Text("Ej 2")
-            }
+                ),
+                contentPadding = PaddingValues(horizontal = 12.dp)
+            ) { Text("Ej 2") }
 
             Button(
                 onClick = { currentExercise = 3 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (currentExercise == 3) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
-                )
-            ) {
-                Text("Ej 3")
-            }
+                ),
+                contentPadding = PaddingValues(horizontal = 12.dp)
+            ) { Text("Ej 3") }
+
+            Button(
+                onClick = { currentExercise = 4 },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = if (currentExercise == 4) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
+                ),
+                contentPadding = PaddingValues(horizontal = 12.dp)
+            ) { Text("Ej 4") }
         }
 
         HorizontalDivider()
-
 
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -78,6 +82,7 @@ fun AppNavigation() {
                 1 -> VisibilityAnimationScreen()
                 2 -> ColorAnimationScreen()
                 3 -> SizeAndPositionScreen()
+                4 -> AnimatedContentScreen()
             }
         }
     }
