@@ -20,7 +20,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
                     AppNavigation()
                 }
             }
@@ -30,7 +29,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppNavigation() {
-
     var currentExercise by remember { mutableStateOf(1) }
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -43,12 +41,11 @@ fun AppNavigation() {
         ) {
             Button(
                 onClick = { currentExercise = 1 },
-
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (currentExercise == 1) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
                 )
             ) {
-                Text("Ejercicio 1")
+                Text("Ej 1")
             }
 
             Button(
@@ -57,7 +54,16 @@ fun AppNavigation() {
                     containerColor = if (currentExercise == 2) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
                 )
             ) {
-                Text("Ejercicio 2")
+                Text("Ej 2")
+            }
+
+            Button(
+                onClick = { currentExercise = 3 },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = if (currentExercise == 3) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
+                )
+            ) {
+                Text("Ej 3")
             }
         }
 
@@ -66,11 +72,12 @@ fun AppNavigation() {
 
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.TopCenter
         ) {
             when (currentExercise) {
                 1 -> VisibilityAnimationScreen()
                 2 -> ColorAnimationScreen()
+                3 -> SizeAndPositionScreen()
             }
         }
     }
