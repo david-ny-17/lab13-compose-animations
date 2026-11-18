@@ -3,7 +3,9 @@ package com.example.composeanimationslab13
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,44 +34,23 @@ fun AppNavigation() {
     var currentExercise by remember { mutableStateOf(1) }
 
     Column(modifier = Modifier.fillMaxSize()) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
+                .padding(16.dp)
+                .horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Button(
-                onClick = { currentExercise = 1 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = if (currentExercise == 1) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
-                ),
-                contentPadding = PaddingValues(horizontal = 12.dp)
-            ) { Text("Ej 1") }
-
-            Button(
-                onClick = { currentExercise = 2 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = if (currentExercise == 2) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
-                ),
-                contentPadding = PaddingValues(horizontal = 12.dp)
-            ) { Text("Ej 2") }
-
-            Button(
-                onClick = { currentExercise = 3 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = if (currentExercise == 3) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
-                ),
-                contentPadding = PaddingValues(horizontal = 12.dp)
-            ) { Text("Ej 3") }
-
-            Button(
-                onClick = { currentExercise = 4 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = if (currentExercise == 4) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
-                ),
-                contentPadding = PaddingValues(horizontal = 12.dp)
-            ) { Text("Ej 4") }
+            val exercises = listOf(1, 2, 3, 4, 5)
+            exercises.forEach { ex ->
+                Button(
+                    onClick = { currentExercise = ex },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (currentExercise == ex) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
+                    ),
+                    contentPadding = PaddingValues(horizontal = 16.dp)
+                ) { Text("Ej $ex") }
+            }
         }
 
         HorizontalDivider()
@@ -83,6 +64,7 @@ fun AppNavigation() {
                 2 -> ColorAnimationScreen()
                 3 -> SizeAndPositionScreen()
                 4 -> AnimatedContentScreen()
+                5 -> GameScreen()
             }
         }
     }
